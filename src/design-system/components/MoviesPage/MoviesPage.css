@@ -1,0 +1,131 @@
+.movies-page {}
+
+.movies-page {
+  margin: 80px 0;
+}
+
+.movies-page .hero-movies {
+  height: 40vh;
+}
+
+
+.movies-page .container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+.movies-page .container h6,
+.movies-page .container h5 {
+
+  font-size: var(--fnt-17px);
+  font-weight: 300;
+  text-transform: capitalize;
+  margin: 0;
+  color: var(--font-color-2);
+}
+
+.movies-page .container h1 {
+  font-size: var(--fnt-header-1);
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0;
+  color: var(--font-color-1);
+}
+
+.movies-page .container h6 {
+  margin-top: 20px;
+}
+
+/* ========================== */
+.movies-page .search-box .form {
+  --focus-input-bg-color: transparent;
+  --width-of-input: 200px;
+  --inline-padding-of-input: 1.2em;
+  --gap: 0.9rem;
+}
+
+
+/* form style */
+.movies-page .search-box {
+
+  width: 100%;
+}
+
+.movies-page .search-box .form {
+  font-size: 0.9rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  width: var(--width-of-input);
+  position: relative;
+  isolation: isolate;
+  max-width: 400px;
+  width: 100%;
+
+}
+
+/* a fancy bg for showing background and border when focus. */
+.movies-page .search-box .fancy-bg {
+  position: absolute;
+  width: 100%;
+  inset: 0;
+  background: var(--body-color-2);
+  border-radius: 10px;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  border: 1px solid var(--gray-color-2);
+}
+
+/* label styling */
+.movies-page .search-box label {
+  width: 100%;
+  padding: 0.8em;
+  height: 70px;
+  padding-inline: var(--inline-padding-of-input);
+  display: flex;
+  align-items: center;
+}
+
+.movies-page .search-box .search, .close-btn {
+  position: absolute;
+}
+
+/* styling search-icon */
+.movies-page .search-box .search {
+  fill: var(--font-color-2);
+  left: var(--inline-padding-of-input);
+}
+
+/* svg -- size */
+.movies-page .search-box svg {
+  width: 25px;
+  display: block;
+}
+
+
+
+/* styling of input */
+.movies-page .search-box .input {
+  width: 100%;
+  margin-inline: min(3em, calc(var(--inline-padding-of-input) + var(--gap)));
+  background: none;
+  border: none;
+  font-size: var(--fnt-16px);
+  font-weight: 500;
+  color: var(--font-color-1) !important;
+}
+
+.movies-page .search-box .input:focus {
+  outline: none;
+}
+
+.movies-page .search-box .input::placeholder {
+  color: var(--gray-color-3)
+}
+
+/* ============= */

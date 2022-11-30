@@ -1,0 +1,59 @@
+.header {
+  height: 80px;
+  background-color: transparent !important;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1001;
+}
+
+.header .navbar {
+  padding: 12px 0;
+  background-color: var(--body-color-1) !important;
+}
+
+
+
+.header .container .navbar-brand svg {
+  width: 40px;
+  height: 40px;
+}
+
+.header .container .box-link {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+  gap: 40px;
+
+}
+
+
+
+.header .container .box-link a {
+  color: var(--font-color-2);
+  transition: var(--transition);
+  font-size: var(--fnt-18px);
+  text-transform: capitalize;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+.header .container .box-link a svg {
+  margin-left: 5px;
+}
+
+.header .container .box-link a.active {
+  color: var(--font-color-1);
+}
+
+@media (max-width: 991px) {
+  .header .container .box-link {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 40px;
+    gap: 20px;
+
+  }
+}
