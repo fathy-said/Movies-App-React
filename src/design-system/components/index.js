@@ -9,6 +9,7 @@ import Movie from './Movie/Movie';
 import BoxMovie from './BoxMovie/BoxMovie';
 import DetailBox from './DetailBox/DetailBox';
 import MoviesPage from './MoviesPage/MoviesPage';
+import PaginationBox from './PaginationBox/PaginationBox';
 
 export {
   SubHeading,
@@ -22,4 +23,5 @@ export {
   BoxMovie,
   DetailBox,
   MoviesPage,
+  PaginationBox,
 };

@@ -1,18 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import { SearchBox } from "../"
 import './MoviesPage.css'
-import { BoxMovie, Movie } from "../index"
+import { BoxMovie, Movie, PaginationBox } from "../index"
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { geMoviesThunk } from "../../RTX/Thunk/getMoviesThunk"
 
 const MoviesPage = () => {
-  let { dataMovie, } = useSelector((state) => state.moviesSlice)
+  let { dataMovie, totalPages } = useSelector((state) => state.moviesSlice)
   let dispatch = useDispatch()
   const shouldData = useRef(true)
   useEffect(() => {
     if (shouldData.current) {
-      dispatch(geMoviesThunk())
+      dispatch(geMoviesThunk({ page: 1 }))
       shouldData.current = false
     }
   }, []);
@@ -50,7 +50,7 @@ const MoviesPage = () => {
               </form>
 
             </div>
-            <h6>120 items</h6>
+            <h6>{dataMovie.length} items</h6>
 
           </div>
         </div>
@@ -61,7 +61,6 @@ const MoviesPage = () => {
               dataMovie.length ? dataMovie.map((el) => {
                 return (
                   <Link key={el.id + 20000} to={'/detail/' + 'movie' + `/${el.id}`} className={'movie col-12 col-md-4 col-xl-3'} >
-
                     <Movie
                       id={el.id}
                       image={el.poster_path}
@@ -70,15 +69,12 @@ const MoviesPage = () => {
                       vote={el.vote_average}
                     />
                   </Link>
-
                 )
-
               }) : null
-
             }
-
           </BoxMovie>
         </div>
+        <PaginationBox totalPages={totalPages} />
       </div>
     </>
   );

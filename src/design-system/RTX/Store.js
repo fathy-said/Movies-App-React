@@ -2,13 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import TopRated from "./Reducers/TopRatedReducer"
 import moviesSlice from "./Reducers/MoviesReducer.jsx"
 import tvSlice from "./Reducers/TvReducer"
-import SearchReducer from "./Reducers/SearchReducer"
+import DetailReducer from "./Reducers/DetailReducer"
 let store = configureStore({
   reducer: {
     TopRated,
     moviesSlice,
     tvSlice,
-    SearchReducer,
+    DetailReducer,
   }
 
 })

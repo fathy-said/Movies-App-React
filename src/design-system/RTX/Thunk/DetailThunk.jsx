@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-export let searchThunk = createAsyncThunk('searchThunk/search', async (arg, ThunkAPI) => {
+export let DetailThunk = createAsyncThunk('searchThunk/search', async (arg, ThunkAPI) => {
   let { rejectWithValue } = ThunkAPI
   try {
 

@@ -3,14 +3,14 @@ import "./DetailBox.css"
 import { AiOutlineStar } from "react-icons/ai";
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { searchThunk } from '../../RTX/Thunk/searchThunk';
+import { DetailThunk } from '../../RTX/Thunk/DetailThunk';
 const DetailBox = () => {
   let dispatch = useDispatch()
-  let { detailData, loading } = useSelector((state) => state.SearchReducer)
+  let { detailData, loading } = useSelector((state) => state.DetailReducer)
   const [detail, setDetail] = useState('');
   let param = useParams()
   useEffect(() => {
-    dispatch(searchThunk({ id: param.id, type: param.type }))
+    dispatch(DetailThunk({ id: param.id, type: param.type }))
   }, [param.type]);
   useEffect(() => {
     setDetail(detailData)
@@ -55,12 +55,12 @@ const DetailBox = () => {
                       <h5>Genres</h5>
                       <h6>Adventure,  Science Fiction, Action</h6>
                     </li>
-
                   </ul>
                 </div>
               </div>
             </div>
-            <button>assistir</button>
+            <a href={detail.homepage ? detail.homepage : null}>
+              <button>assistir</button></a>
           </div>
         </div>) : null)
 
