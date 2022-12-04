@@ -1,28 +1,28 @@
 import React, { useEffect, useRef } from 'react';
 import { SearchBox } from "../"
-import './MoviesPage.css'
 import { BoxMovie, Movie, PaginationBox } from "../index"
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { geMoviesThunk } from "../../RTX/Thunk/getMoviesThunk"
+import { getTvThunk } from "../../RTX/Thunk/getTvThunk"
+import './TvPage.css'
+const TvPage = () => {
+  let { dataTv, totalPages, loadingTv } = useSelector((state) => state.tvSlice)
 
-const MoviesPage = () => {
-  let { dataMovie, totalPages, loadingMovie } = useSelector((state) => state.moviesSlice)
   let dispatch = useDispatch()
   const shouldData = useRef(true)
   useEffect(() => {
     if (shouldData.current) {
-      dispatch(geMoviesThunk({ page: 1 }))
+      dispatch(getTvThunk({ page: 1 }))
       shouldData.current = false
     }
   }, []);
   return (
     <>
-      <div className="movies-page">
+      <div className="tv-page">
         <div className="hero-movies">
           <div className="container">
             <h5>MaileHereko</h5>
-            <h1>Movies</h1>
+            <h1>Tv Shows</h1>
             <div className='search-box'>
               <form className="form">
                 <label htmlFor="search">
@@ -50,15 +50,15 @@ const MoviesPage = () => {
               </form>
 
             </div>
-            <h6>{dataMovie.length} items</h6>
+            <h6>{dataTv.length} items</h6>
 
           </div>
         </div>
         <div className="box container">
           {
-            loadingMovie ? <h2>Loading...</h2> : (<BoxMovie>
+            loadingTv ? <h2>Loading...</h2> : (<BoxMovie>
               {
-                dataMovie.length ? dataMovie.map((el) => {
+                dataTv.length ? dataTv.map((el) => {
                   return (
                     <Link key={el.id + 20000} to={'/detail/' + 'movie' + `/${el.id}`} className={'movie col-12 col-md-4 col-xl-3'} >
                       <Movie
@@ -77,10 +77,11 @@ const MoviesPage = () => {
           }
 
         </div>
-        <PaginationBox totalPages={totalPages} dispatchType={geMoviesThunk} />
+        <PaginationBox totalPages={totalPages} dispatchType={getTvThunk} />
+
       </div>
     </>
   );
 }
 
-export default MoviesPage;
+export default TvPage;

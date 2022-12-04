@@ -1,27 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getTvThunk } from "../Thunk/getTvThunk"
-
-
-
-let initState = { dataTv: [] }
+let initState = { dataTv: [], totalPages: 1, loadingTv: false }
 let tvSlice = createSlice({
   name: 'tvShows',
   initialState: initState,
   reducers: {},
   extraReducers: {
     [getTvThunk.pending]: (state, action) => {
-      console.log("pending");
+      // console.log("pending");
+      state.loadingTv = true;
     },
     [getTvThunk.fulfilled]: (state, action) => {
       let data = action.payload.results
+      state.totalPages = action.payload.total_pages
+      // let data = action.payload.data.results
+      // state.totalPages = action.payload.data.total_pages
       state.dataTv = data
+      state.loadingTv = false;
     },
     [getTvThunk.rejected]: (state, action) => {
       console.log("rejected");
-
-
+      state.loadingTv = false;
     },
-
   },
 
 })
