@@ -1,13 +1,16 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SearchBox } from "../"
 import './MoviesPage.css'
-import { BoxMovie, Movie, PaginationBox } from "../index"
+import { BoxMovie, Movie, PaginationBox, PaginationSearch } from "../index"
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { geMoviesThunk } from "../../RTX/Thunk/getMoviesThunk"
+import { SearchMoviesThunk } from "../../RTX/Thunk/SearchMoviesThunk"
 
 const MoviesPage = () => {
   let { dataMovie, totalPages, loadingMovie } = useSelector((state) => state.moviesSlice)
+  const [getWord, setWord] = useState(null);
+
   let dispatch = useDispatch()
   const shouldData = useRef(true)
   useEffect(() => {
@@ -31,6 +34,14 @@ const MoviesPage = () => {
                     type="text"
                     required=""
                     placeholder={`Search`}
+                    onChange={(e) => {
+                      dispatch(SearchMoviesThunk({ type: 'tv', query: e.target.value }))
+                      setWord(e.target.value)
+                      if (e.target.value.length <= 0) {
+                        dispatch(geMoviesThunk({ page: 1 }))
+                        setWord(null)
+                      }
+                    }}
                     id="search"
                   />
                   <div className="fancy-bg" />
@@ -77,8 +88,10 @@ const MoviesPage = () => {
           }
 
         </div>
-        <PaginationBox totalPages={totalPages} dispatchType={geMoviesThunk} />
-      </div>
+        {
+          getWord !== null ? (<PaginationSearch totalPages={totalPages} dispatchType={SearchMoviesThunk} getWord={getWord} />) : (<PaginationBox totalPages={totalPages} dispatchType={geMoviesThunk} />)
+
+        }      </div>
     </>
   );
 }

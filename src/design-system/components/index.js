@@ -10,6 +10,7 @@ import BoxMovie from './BoxMovie/BoxMovie';
 import DetailBox from './DetailBox/DetailBox';
 import MoviesPage from './MoviesPage/MoviesPage';
 import PaginationBox from './PaginationBox/PaginationBox';
+import PaginationSearch from './PaginationBox/PaginationSearch';
 import TvPage from './TvPage/TvPage';
 
 export {
@@ -25,5 +26,6 @@ export {
   DetailBox,
   MoviesPage,
   PaginationBox,
+  PaginationSearch,
   TvPage,
 };

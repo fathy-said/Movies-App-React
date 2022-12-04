@@ -1,13 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SearchBox } from "../"
-import { BoxMovie, Movie, PaginationBox } from "../index"
+import { BoxMovie, Movie, PaginationBox, PaginationSearch } from "../index"
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getTvThunk } from "../../RTX/Thunk/getTvThunk"
+import { SearchTvThunk } from "../../RTX/Thunk/SearchTvThunk"
 import './TvPage.css'
 const TvPage = () => {
   let { dataTv, totalPages, loadingTv } = useSelector((state) => state.tvSlice)
-
+  const [getWord, setWord] = useState(null);
   let dispatch = useDispatch()
   const shouldData = useRef(true)
   useEffect(() => {
@@ -32,6 +33,16 @@ const TvPage = () => {
                     required=""
                     placeholder={`Search`}
                     id="search"
+                    onChange={(e) => {
+                      dispatch(SearchTvThunk({ type: 'tv', query: e.target.value }))
+
+                      setWord(e.target.value)
+                      if (e.target.value.length <= 0) {
+                        dispatch(getTvThunk({ page: 1 }))
+                        setWord(null)
+
+                      }
+                    }}
                   />
                   <div className="fancy-bg" />
                   <div className="search">
@@ -60,11 +71,11 @@ const TvPage = () => {
               {
                 dataTv.length ? dataTv.map((el) => {
                   return (
-                    <Link key={el.id + 20000} to={'/detail/' + 'movie' + `/${el.id}`} className={'movie col-12 col-md-4 col-xl-3'} >
+                    <Link key={el.id + 20000} to={'/detail/' + 'tv' + `/${el.id}`} className={'movie col-12 col-md-4 col-xl-3'} >
                       <Movie
                         id={el.id}
                         image={el.poster_path}
-                        title={el.original_title}
+                        title={el.name}
                         description={el.overview}
                         vote={el.vote_average}
                       />
@@ -77,7 +88,11 @@ const TvPage = () => {
           }
 
         </div>
-        <PaginationBox totalPages={totalPages} dispatchType={getTvThunk} />
+        {
+          getWord !== null ? (<PaginationSearch totalPages={totalPages} dispatchType={SearchTvThunk} getWord={getWord} />) : (<PaginationBox totalPages={totalPages} dispatchType={getTvThunk} />)
+
+        }
+
 
       </div>
     </>

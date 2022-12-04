@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import "./PaginationBox.css"
 import ReactPaginate from 'react-paginate';
-import { geMoviesThunk } from "../../RTX/Thunk/getMoviesThunk"
 import { useDispatch } from 'react-redux';
 
-const PaginationBox = ({ totalPages, dispatchType }) => {
+const PaginationSearch = ({ totalPages, dispatchType, getWord }) => {
   let dispatch = useDispatch()
-
   const [pageCount, setPageCount] = useState(totalPages);
   let handlePageClick = (data) => {
     // console.log(data.selected + 1);
-    dispatch(dispatchType({ page: data.selected + 1 }))
+    dispatch(dispatchType({ page: data.selected + 1, query: getWord }))
   }
   useEffect(() => {
     if (totalPages > 500) {
@@ -50,4 +48,4 @@ const PaginationBox = ({ totalPages, dispatchType }) => {
   );
 }
 
-export default PaginationBox;
+export default PaginationSearch;
