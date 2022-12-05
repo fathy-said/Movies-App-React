@@ -12,6 +12,7 @@ import MoviesPage from './MoviesPage/MoviesPage';
 import PaginationBox from './PaginationBox/PaginationBox';
 import PaginationSearch from './PaginationBox/PaginationSearch';
 import TvPage from './TvPage/TvPage';
+import LoginPage from './loginPage/loginPage.jsx';
 
 export {
   SubHeading,
@@ -28,4 +29,5 @@ export {
   PaginationBox,
   PaginationSearch,
   TvPage,
+  LoginPage,
 };

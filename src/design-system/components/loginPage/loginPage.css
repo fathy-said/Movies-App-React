@@ -1,0 +1,63 @@
+.login-box {
+  height: 100vh;
+}
+
+.login-box .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.login-box .container form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 400px;
+
+}
+
+.login-box .container form div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 100%;
+
+
+}
+
+.login-box .container form input {
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: var(--gray-color-3);
+  color: var(--font-color-1);
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.login-box .container form input::placeholder {
+  text-transform: capitalize;
+  color: var(--font-color-1);
+}
+
+.login-box .container form input[type="submit"] {
+  width: fit-content;
+  background-color: var(--main-color-bt-1);
+  padding: 10px 20px;
+}
+
+.login-box .container form .box-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box .container form .box-submit.disabled input {
+  cursor: no-drop;
+}

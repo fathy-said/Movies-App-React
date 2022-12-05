@@ -6,6 +6,8 @@ import { getTopRatedThunk } from "../../RTX/Thunk/getTopRatedThunk"
 import { geMoviesThunk } from "../../RTX/Thunk/getMoviesThunk"
 import { getTvThunk } from "../../RTX/Thunk/getTvThunk"
 import { Link } from 'react-router-dom';
+import Slide from 'react-reveal/Slide';
+
 const HomeMovies = () => {
   let { dataTop, } = useSelector((state) => state.TopRated)
   let { dataMovie, } = useSelector((state) => state.moviesSlice)

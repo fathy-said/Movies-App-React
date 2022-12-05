@@ -37,10 +37,19 @@
   text-transform: capitalize;
   font-weight: 500;
   margin: 10px 0;
+  cursor: pointer;
 }
 
 .header .container .box-link a svg {
   margin-left: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.header .container .box-link a span {
+  margin: 0 8px;
+  color: var(--main-color-bt-1);
+  font-size: var(--fnt-16px);
 }
 
 .header .container .box-link a.active {
